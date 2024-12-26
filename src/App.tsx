@@ -68,7 +68,7 @@ const App = () => {
   useEffect(() => {
     const fetchWishes = async () => {
       try {
-        const response = await axios.get("https://backend-thiep-moi.vercel.app/api/wishes");
+        const response = await axios.get("https://backendthiepmoi.onrender.com/api/wishes");
         setWishes(response.data);
       } catch (err) {
         console.error("Error fetching wishes:", err);
@@ -82,7 +82,7 @@ const App = () => {
     e.preventDefault();
     if (name.trim() && message.trim()) {
       try {
-        const response = await axios.post("https://backend-thiep-moi.vercel.app/api/wishes", {
+        const response = await axios.post("https://backendthiepmoi.onrender.com/api/wishes", {
           name,
           message,
         });
