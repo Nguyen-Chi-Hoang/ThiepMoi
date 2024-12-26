@@ -1,14 +1,24 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import axios from "axios";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import { EffectCoverflow } from "swiper/modules";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+interface Wish {
+  name: string;
+  message: string;
+}
 
 const App = () => {
+  const audioRef = useRef<HTMLAudioElement | null>(null); // Tham chiếu đến phần tử audio
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+  const [wishes, setWishes] = useState<Wish[]>([]);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -54,9 +64,61 @@ const App = () => {
     "../public/40.jpg",
   ];
 
+  // Lấy danh sách lời chúc từ API
+  useEffect(() => {
+    const fetchWishes = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/wishes");
+        setWishes(response.data);
+      } catch (err) {
+        console.error("Error fetching wishes:", err);
+      }
+    };
+    fetchWishes();
+  }, []);
+
+  // Gửi form
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (name.trim() && message.trim()) {
+      try {
+        const response = await axios.post("http://localhost:5000/api/wishes", {
+          name,
+          message,
+        });
+        setWishes([response.data, ...wishes]); // Thêm lời chúc mới vào danh sách
+        setName("");
+        setMessage("");
+      } catch (err) {
+        console.error("Error saving wish:", err);
+      }
+    }
+  };
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <>
       <Header />
+      <div className="fixed top-4 right-4 z-50">
+        {" "}
+        {/* Vị trí cố định ở góc trên bên phải */}
+        <audio ref={audioRef} src="../public/EverytimeWeTouch.mp3" loop />
+        <button
+          onClick={toggleMusic}
+          className={`p-3 rounded-full text-blue-700 font-semibold shadow-lg bg-amber-600`}
+        >
+          {isPlaying ? "🔊" : "🔈X"}
+        </button>
+      </div>
       <div className="flex flex-wrap justify-center gap-8 px-4 py-8 sm:px-12 sm:py-16">
         {/* Hình 1 */}
         <div className="relative w-full max-w-sm h-[25rem] sm:w-96 sm:h-[30rem] overflow-hidden rounded-xl group">
@@ -302,6 +364,100 @@ const App = () => {
         </Swiper>
       </div>
 
+      <div className="p-6 bg-gray-100 min-h-screen flex flex-col items-center">
+        {/* Container */}
+        <div
+          className="bg-cover bg-center bg-no-repeat w-full h-full p-8 rounded-lg shadow-lg border border-gray-300 flex flex-col items-center gap-6"
+          style={{
+            backgroundImage: "url('/public/17.jpg')",
+            backgroundPosition: "top center",
+            width: "100vw",
+            height: "auto",
+          }}
+        >
+          {/* Danh sách lời chúc */}
+          <div
+            className="shadow-md rounded-lg p-6 w-full max-w-4xl"
+            style={{
+              backgroundColor: "rgba(255, 221, 226, 0.7)",
+              backdropFilter: "blur(5px)",
+            }}
+          >
+            <h3 className="text-center text-lg font-bold text-gray-800 mb-4">
+              Gửi lời chúc đến cặp đôi
+            </h3>
+            <div
+              className="space-y-4 max-h-[300px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
+              style={{
+                scrollbarWidth: "thin",
+                WebkitOverflowScrolling: "touch",
+              }}
+            >
+              {wishes.map((wish, index) => (
+                <div
+                  key={index}
+                  className="p-4 border border-gray-200 text-center rounded-lg"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.8)",
+                    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  <h4 className="font-bold text-gray-800">{wish.name}</h4>
+                  <p className="text-gray-600">{wish.message}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Form gửi lời chúc */}
+          <div
+            className="shadow-md rounded-lg p-6 max-w-md w-full"
+            style={{
+              backgroundColor: "rgba(255, 221, 226, 0.7)",
+              backdropFilter: "blur(5px)",
+              fontFamily: "Times New Roman, serif",
+            }}
+          >
+            <h3 className="text-center text-lg font-bold text-gray-800 mb-4">
+              Gửi lời chúc
+            </h3>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label className="block text-xl text-gray-700 mb-1">
+                  Tên của bạn
+                </label>
+                <input
+                  type="text"
+                  placeholder="Tên của bạn"
+                  className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none  focus:ring-2 focus:ring-[#8B4513]"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-xl text-gray-700 mb-1">
+                  Lời nhắn gửi
+                </label>
+                <textarea
+                  placeholder="Lời nhắn gửi"
+                  className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none  focus:ring-2 focus:ring-[#8B4513]"
+                  rows={4}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-[#8B4513] text-white rounded-lg p-2 hover:bg-[#6A3A11] transition"
+              >
+                Gửi lời chúc
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
       <Footer />
     </>
   );
