@@ -111,7 +111,7 @@ const App = () => {
       <div className="fixed top-4 right-4 z-50">
         {" "}
         {/* Vị trí cố định ở góc trên bên phải */}
-        <audio ref={audioRef} src="../public/EverytimeWeTouch.mp3" loop />
+        <audio ref={audioRef} src="/EverytimeWeTouch.mp3" loop />
         <button
           onClick={toggleMusic}
           className={`p-3 rounded-full text-blue-700 font-semibold shadow-lg bg-amber-600`}
