@@ -32,7 +32,7 @@ const Footer = () => {
       ref={footerRef}
       className="flex items-center justify-center text-center"
       style={{
-        backgroundImage: "url('../public/07.jpg')", // Đường dẫn đúng đến ảnh
+        backgroundImage: "url('/07.jpg')", // Đường dẫn đúng đến ảnh
         backgroundSize: "cover", // Phủ toàn bộ vùng nền
         backgroundPosition: "top", // Căn chỉnh ảnh từ trên xuống
         fontFamily: "Times New Roman, serif", // Phông chữ Times New Roman

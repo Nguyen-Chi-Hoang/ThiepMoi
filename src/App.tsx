@@ -52,16 +52,16 @@ const App = () => {
   }, []);
 
   const images = [
-    "../public/07.jpg",
-    "../public/08.jpg",
-    "../public/14.jpg",
-    "../public/15.jpg",
-    "../public/23.jpg",
-    "../public/24.jpg",
-    "../public/33.jpg",
-    "../public/34.jpg",
-    "../public/39.jpg",
-    "../public/40.jpg",
+    "/07.jpg",
+    "/08.jpg",
+    "/14.jpg",
+    "/15.jpg",
+    "/23.jpg",
+    "/24.jpg",
+    "/33.jpg",
+    "/34.jpg",
+    "/39.jpg",
+    "/40.jpg",
   ];
 
   // Lấy danh sách lời chúc từ API
@@ -123,7 +123,7 @@ const App = () => {
         {/* Hình 1 */}
         <div className="relative w-full max-w-sm h-[25rem] sm:w-96 sm:h-[30rem] overflow-hidden rounded-xl group">
           <img
-            src="../public/14.jpg"
+            src="/14.jpg"
             alt="Bride"
             className="w-full h-full object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-500"
           />
@@ -143,7 +143,7 @@ const App = () => {
         {/* Hình 2 */}
         <div className="relative w-full max-w-sm h-[25rem] sm:w-96 sm:h-[30rem] overflow-hidden rounded-xl group">
           <img
-            src="../public/13.jpg"
+            src="/13.jpg"
             alt="Groom"
             className="w-full h-full object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-500"
           />
@@ -164,7 +164,7 @@ const App = () => {
       <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
         <div
           className="w-[80%] rounded-t-3xl shadow-lg p-8 mx-auto text-center relative bg-cover bg-center"
-          style={{ backgroundImage: "url('../public/17.jpg')" }}
+          style={{ backgroundImage: "url('/17.jpg')" }}
         >
           <h1 className="text-white">Cùng đếm ngược thời gian</h1>
           <h1
@@ -202,7 +202,7 @@ const App = () => {
         </div>
         <div className="mt-6 bg-white rounded-lg shadow-lg px-8 py-8 text-center w-[95%] sm:w-[80%]">
           <img
-            src="../public/27.jpg"
+            src="/27.jpg"
             alt="Wedding Couple"
             className="w-48 h-48 sm:w-64 sm:h-64 rounded-t-full mx-auto mb-6 object-cover"
           />
@@ -264,7 +264,7 @@ const App = () => {
         </div>
         <div className="mt-6 bg-white rounded-lg shadow-lg px-8 py-8 text-center w-[95%] sm:w-[80%]">
           <img
-            src="../public/28.jpg"
+            src="/28.jpg"
             alt="Wedding Couple"
             className="w-48 h-48 sm:w-64 sm:h-64 rounded-t-full mx-auto mb-6 object-cover"
           />
