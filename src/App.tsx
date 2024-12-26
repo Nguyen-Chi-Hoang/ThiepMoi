@@ -369,7 +369,7 @@ const App = () => {
         <div
           className="bg-cover bg-center bg-no-repeat w-full h-full p-8 rounded-lg shadow-lg border border-gray-300 flex flex-col items-center gap-6"
           style={{
-            backgroundImage: "url('/public/17.jpg')",
+            backgroundImage: "url('/17.jpg')",
             backgroundPosition: "top center",
             width: "100vw",
             height: "auto",
