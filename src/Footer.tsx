@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false); // Trạng thái kiểm tra chữ đã xuất hiện
