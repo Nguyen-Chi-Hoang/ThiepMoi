@@ -5,7 +5,7 @@ const Header = () => {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('../public/07.jpg')", // Thay bằng đường dẫn ảnh của bạn
+          backgroundImage: "url('/07.jpg')", // Thay bằng đường dẫn ảnh của bạn
         }}
       ></div>
 
