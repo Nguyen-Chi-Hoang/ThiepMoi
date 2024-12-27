@@ -143,7 +143,7 @@ const App = () => {
         {/* Hình 2 */}
         <div className="relative w-full max-w-sm h-[25rem] sm:w-96 sm:h-[30rem] overflow-hidden rounded-xl group">
           <img
-            src="/13.jpg"
+            src="/12.jpg"
             alt="Groom"
             className="w-full h-full object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-500"
           />
@@ -277,7 +277,7 @@ const App = () => {
             Tiệc Nhà Gái
           </h2>
           <p className="text-gray-700 mb-4">
-            Số 154, Ngõ 7A3, Thôn 6, Xã Trung Hà, Yên Lạc, Vĩnh Phúc
+            Số 16A, Thôn Xuân Đài, Xã Nguyệt Đức, Huyện Yên Lạc, Tỉnh Vĩnh Phúc
           </p>
           <p className="font-semibold text-gray-700 text-base mb-6">
             Vào lúc 15:00
