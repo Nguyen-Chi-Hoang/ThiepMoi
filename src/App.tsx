@@ -52,12 +52,12 @@ const App = () => {
   }, []);
 
   const images = [
-    "/07.jpg",
+    "/01.jpg",
     "/08.jpg",
     "/14.jpg",
-    "/15.jpg",
+    "/17.jpg",
+    "/22.jpg",
     "/23.jpg",
-    "/24.jpg",
     "/33.jpg",
     "/34.jpg",
     "/39.jpg",
@@ -68,7 +68,9 @@ const App = () => {
   useEffect(() => {
     const fetchWishes = async () => {
       try {
-        const response = await axios.get("https://backendthiepmoi.onrender.com/api/wishes");
+        const response = await axios.get(
+          "https://backendthiepmoi.onrender.com/api/wishes"
+        );
         setWishes(response.data);
       } catch (err) {
         console.error("Error fetching wishes:", err);
@@ -82,10 +84,13 @@ const App = () => {
     e.preventDefault();
     if (name.trim() && message.trim()) {
       try {
-        const response = await axios.post("https://backendthiepmoi.onrender.com/api/wishes", {
-          name,
-          message,
-        });
+        const response = await axios.post(
+          "https://backendthiepmoi.onrender.com/api/wishes",
+          {
+            name,
+            message,
+          }
+        );
         setWishes([response.data, ...wishes]); // Thêm lời chúc mới vào danh sách
         setName("");
         setMessage("");
@@ -215,7 +220,7 @@ const App = () => {
             Tiệc Nhà Trai
           </h2>
           <p className="text-gray-700 mb-4">
-            Nam Hưng, Vũ Lạc, TP Thái Bình, Thái Bình
+            Thôn Nam Hưng, xã Vũ Lạc, tp Thái Bình, Thái Bình
           </p>
           <p className="font-semibold text-gray-700 text-base mb-6">
             Vào lúc 11:00
@@ -277,7 +282,7 @@ const App = () => {
             Tiệc Nhà Gái
           </h2>
           <p className="text-gray-700 mb-4">
-            Số 16A, Thôn Xuân Đài, Xã Nguyệt Đức, Huyện Yên Lạc, Tỉnh Vĩnh Phúc
+            Số nhà 16A, Ngã tư Thôn Xuân Đài, Nguyệt Đức, Yên Lạc, Vĩnh Phúc
           </p>
           <p className="font-semibold text-gray-700 text-base mb-6">
             Vào lúc 15:00

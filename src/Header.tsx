@@ -25,7 +25,7 @@ const Header = () => {
             fontFamily: "'Dancing Script', cursive",
           }}
         >
-          Thu Quỳnh
+          Anh Tuấn
         </h1>
         <p
           className="text-3xl mt-1 font-light text-gray-700"
@@ -41,7 +41,7 @@ const Header = () => {
             fontFamily: "'Dancing Script', cursive",
           }}
         >
-          Anh Tuấn
+          Thu Quỳnh
         </h1>
         {/* Dòng kẻ giữa tên cô dâu chú rể và thời gian địa điểm tổ chức */}
         <hr className="my-8 border-t-2 border-gray-600 w-full" />{" "}
@@ -55,7 +55,7 @@ const Header = () => {
                 className="text-lg font-light"
                 style={{ fontFamily: "Times New Roman" }}
               >
-                Thứ Năm
+                Thứ Tư
               </p>
             </div>
           </div>
@@ -112,7 +112,7 @@ const Header = () => {
             fontFamily: "Times New Roman",
           }}
         >
-          Nam Hưng, Vũ Lạc, TP Thái Bình, Thái Bình
+          Thôn Nam Hưng, xã Vũ Lạc, tp Thái Bình, Thái Bình
         </p>
         <hr className="my-8 border-t-2 border-gray-600 w-full" />{" "}
         {/* Màu dòng kẻ đã được thay đổi */}
